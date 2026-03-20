@@ -1,27 +1,27 @@
 # multiscale-toolbox
 
-Toolbox reusable para procesamiento multiescala de imagenes 2D y volumenes 3D, orientado a la Tarea 1 de Procesamiento Multiescala de Imagenes.
+Toolbox reusable para procesamiento multiescala de imágenes 2D y volúmenes 3D, orientado a la Tarea 1 de Procesamiento Multiescala de Imágenes.
 
 Incluye:
 
-- filtros promedio, gaussianos, ideales y binomiales;
-- filtros esfericos para volumenes 3D;
-- construccion de piramides gaussianas y laplacianas en 2D y 3D;
-- reconstruccion laplaciana;
-- upsampling por insercion de ceros + convolucion;
-- carga de volumenes NIfTI;
-- metricas de reconstruccion y metricas con mascara;
-- reponderacion de capas;
-- hard threshold y soft threshold;
-- utilidades simples de visualizacion 2D y 3D.
+- filtros promedio, gaussianos, ideales y binomiales.
+- filtros esféricos para volúmenes 3D.
+- construcción de pirámides gaussianas y laplacianas en 2D y 3D.
+- reconstrucción laplaciana.
+- upsampling por inserción de ceros + convolución.
+- carga de volúmenes NIfTI.
+- métricas de reconstrucción y métricas con máscara.
+- reponderación de capas.
+- hard threshold y soft threshold.
+- utilidades simples de visualización 2D y 3D.
 
-## Instalacion local
+## Instalación local
 
 ```bash
 pip install -e .
 ```
 
-## Uso rapido
+## Uso rápido
 
 ```python
 from pathlib import Path
