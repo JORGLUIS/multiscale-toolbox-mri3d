@@ -4,16 +4,19 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "multiscale-toolbox"
-version = "0.2.0"
-description = "Reusable multiscale image processing toolbox for Gaussian and Laplacian pyramids in 2D and 3D."
+version = "0.3.0"
+description = "Reusable multiscale image processing toolbox for pyramids, WavePsi/HaarPSI analysis, and wavelet denoising in 2D and 3D."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
   "numpy",
   "scipy",
+  "pandas",
   "matplotlib",
   "pillow",
   "nibabel",
+  "PyWavelets",
+  "scikit-image",
 ]
 
 [tool.setuptools]
