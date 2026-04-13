@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "multiscale-toolbox"
-version = "0.4.0"
-description = "Reusable multiscale image processing toolbox aligned with Tarea2_.ipynb for WavePsi/HaarPSI analysis and DWT2 denoising in 2D and 3D."
+version = "0.3.0"
+description = "Reusable multiscale toolbox extended with WavePsi and DWT denoising utilities for Task 2."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
