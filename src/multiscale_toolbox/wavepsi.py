@@ -5,16 +5,16 @@ import pandas as pd
 import pywt
 from skimage.metrics import structural_similarity as ssim
 
+from .external_haarpsi import haarpsi_repo, repo_logit, repo_sigmoid
 from .task2_utils import normalize_to_255, pad_for_swtn, rmse
 
 
 def logistic(x: np.ndarray, alpha: float = 4.2) -> np.ndarray:
-    return 1.0 / (1.0 + np.exp(-alpha * x))
+    return repo_sigmoid(x, alpha=alpha)
 
 
 def logistic_inv(y: float | np.ndarray, alpha: float = 4.2) -> np.ndarray:
-    y = np.clip(y, 1e-6, 1 - 1e-6)
-    return np.log(y / (1 - y)) / alpha
+    return repo_logit(y, alpha=alpha)
 
 
 def directional_keys(ndim: int) -> list[str]:
@@ -39,6 +39,21 @@ def wavepsi(
     x = np.asarray(x, dtype=float)
     y = np.asarray(y, dtype=float)
     mask_bool = np.asarray(mask).astype(bool) if mask is not None else None
+
+    # For the exact 2D Haar case, use the open-source rgcda/haarpsi implementation
+    # as the task's requested base and return its maps directly.
+    if wavelet == "haar" and x.ndim == 2 and y.ndim == 2 and mask_bool is None and level == 3:
+        score, similarity_maps, weight_maps = haarpsi_repo(
+            normalize_to_255(x),
+            normalize_to_255(y),
+            preprocess_with_subsampling=True,
+        )
+        if return_maps:
+            return score, {"horizontal": similarity_maps[:, :, 0], "vertical": similarity_maps[:, :, 1]}, {
+                "horizontal": weight_maps[:, :, 0],
+                "vertical": weight_maps[:, :, 1],
+            }
+        return score
 
     x255 = normalize_to_255(x, mask=mask_bool)
     y255 = normalize_to_255(y, mask=mask_bool)

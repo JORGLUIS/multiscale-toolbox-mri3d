@@ -55,6 +55,7 @@ from .task2_utils import (
     normalize_to_unit,
     pad_for_swtn,
 )
+from .external_haarpsi import haarpsi_repo
 from .wavepsi import (
     compare_mri_reconstructions,
     directional_keys,
@@ -84,6 +85,7 @@ __all__ = [
     "evaluate_denoising_grid",
     "gaussian_filter_fn",
     "haarpsi",
+    "haarpsi_repo",
     "hard_threshold",
     "ideal_lowpass_filter",
     "laplacian_energy",
