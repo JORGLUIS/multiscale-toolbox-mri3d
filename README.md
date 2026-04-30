@@ -1,28 +1,44 @@
 # multiscale-toolbox
 
-Repositorio local preparado para sincronizarse con `JORGLUIS/multiscale-toolbox-mri3d`.
+Toolbox reutilizable para procesamiento multiescala de imagenes 2D y volumenes 3D.
 
-En esta tarea agrego utilidades centradas en dos frentes:
+Este repositorio concentra el trabajo desarrollado para las tareas del curso:
 
-- `WavePsi` y `HaarPSI` aproximado para comparación perceptual en 2D y 3D.
-- denoising con `DWT 2D` para imágenes astronómicas.
+- `multiscale_toolbox`: utilidades base de piramides, MRI 3D, `WavePsi`, `HaarPSI` y denoising `DWT 2D`.
+- `multiscale_toolbox_t3`: utilidades especificas de la Tarea 3 para Starlets 2D/3D, transformada multiescala de mediana y aproximaciones tipo SMV.
 
-Funciones principales agregadas para la Tarea 2:
+## Contenido relevante para la Tarea 3
 
-- `ensure_extracted`
-- `load_task2_mri_data`
-- `load_task2_astronomy_images`
-- `wavepsi`
-- `haarpsi`
-- `compare_mri_reconstructions`
-- `add_gaussian_noise`
-- `add_uniform_noise`
-- `denoise_dwt2`
-- `evaluate_denoising_grid`
+La package `src/multiscale_toolbox_t3` incluye las funciones usadas por el notebook `Tarea3_JorgeMedina.ipynb`:
 
-El notebook `Tarea2_2026_WavePsi_y_DWT2D.ipynb` usa una estrategia `GitHub-first`:
+- `starlet_decomp_2d`, `starlet_recon_2d`
+- `mmt_decomp_2d`, `mmt_recon_2d`
+- `starlet_decomp_3d`, `starlet_recon_3d`
+- `threshold_coeffs`, `mad_sigma`
+- `add_gaussian_noise`, `add_uniform_noise`
+- `rmse`, `evaluate_sim`
+- `get_HJ_filter`, `smv_deconv_direct`, `smv_deconv_tikhonov`
+- `load_nifti_volume`, `load_grayscale_image`, `central_slice`
 
-- primero intenta descargar `JORGLUIS/multiscale-toolbox-mri3d` desde GitHub;
-- si ese repo todavía no contiene los módulos de la Tarea 2, usa este mirror local en `toolbox_repo/src/multiscale_toolbox`.
+## Flujo esperado de uso
 
-Así, una vez que el repo remoto se sincronice, el notebook pasará a importar desde GitHub sin cambiar el flujo del análisis.
+Los notebooks del curso pueden clonar este repositorio en una carpeta local `github_repo` e importar los modulos directamente desde `src`.
+
+En particular, la version actual de `Tarea3_JorgeMedina.ipynb`:
+
+- clona o actualiza `JORGLUIS/multiscale-toolbox-mri3d`,
+- agrega `github_repo/src` al `sys.path`,
+- e importa `multiscale_toolbox_t3` unicamente desde ese clon.
+
+## Dependencias
+
+El proyecto requiere Python `>=3.10` y usa principalmente:
+
+- `numpy`
+- `scipy`
+- `pandas`
+- `matplotlib`
+- `pillow`
+- `nibabel`
+- `PyWavelets`
+- `scikit-image`
