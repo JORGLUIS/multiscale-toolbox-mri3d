@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "multiscale-toolbox"
-version = "0.4.0"
-description = "Reusable multiscale toolbox with MRI, WavePsi, DWT denoising, and Task 3 Starlet/MMT/SMV utilities."
+version = "0.5.0"
+description = "Reusable multiscale toolbox with MRI, WavePsi, DWT denoising, Task 3 Starlet/MMT/SMV utilities, and Task 4 deconvolution with multiresolution regularization."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
